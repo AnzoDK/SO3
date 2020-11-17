@@ -52,7 +52,7 @@ class Ball extends ObjBase
             PVector newForce = new PVector((mouseX-m_rect.x),(mouseY-m_rect.y));
             velocity.add(newForce); 
             locked = false;
-            println("Adding force: " + newForce.x + ", " + newForce.y);
+            println("Adding force: " + newForce.x + ", " + (newForce.y*-1));
             override = true;
           }
          }

@@ -33,12 +33,13 @@ class ForceTracker extends Force
   {
     super("Ball");
     ball = b;
-    super.force = b.velocity;
+    super.force = new PVector(b.velocity.x,b.velocity.y,0);
   }
   
   void Update()
   {
-    super.force = ball.velocity;
+    super.force = new PVector(ball.velocity.x,ball.velocity.y,0);
+    super.force.y = super.force.y*-1;
   }
 }
 

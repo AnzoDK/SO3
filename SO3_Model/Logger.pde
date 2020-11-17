@@ -8,8 +8,7 @@ class Logger
   {
     CreatePath();
     workArray = new ArrayList<String>();
-    String s_headers = "frame(1 sec = 60 frames), PosX, PosY, VelocityVector";
-    workArray.add(s_headers);
+    CreateHeaders();
   }
   
   void Update()
@@ -46,6 +45,11 @@ class Logger
     }
   }
   
+  void CreateHeaders()
+  {
+    String s_headers = "frame(1 sec = 60 frames), PosX, PosY, VelocityVector";
+    workArray.add(s_headers);
+  }
   void CreatePath()
   {
     path = new String();
@@ -56,6 +60,7 @@ class Logger
     active = false;
     CreatePath();
     workArray.clear();
+    CreateHeaders();
     
   }
 }

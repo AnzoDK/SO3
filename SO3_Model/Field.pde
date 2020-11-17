@@ -37,6 +37,14 @@ class Field extends ObjBase
         {
           if(!forceDrawer.forces.get(u).name.contains("Ball"))
           {
+            if(forceDrawer.forces.get(u).force.x == Float.NaN)
+            {
+              forceDrawer.forces.get(u).force.x = 0;
+            }
+            if(forceDrawer.forces.get(u).force.y == Float.NaN)
+            {
+              forceDrawer.forces.get(u).force.x = 0;
+            }
             balls.get(i).velocity.add(forceDrawer.forces.get(u).force);      
           }
         }
