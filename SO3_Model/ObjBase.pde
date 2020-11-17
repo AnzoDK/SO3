@@ -1,5 +1,20 @@
 enum Shape{circle,square};
 
+class Point2D
+{
+ float x,y;
+ Point2D(float _x, float _y)
+ {
+   x = _x;
+   y = _y;
+ }
+ Point2D()
+ {
+   x = 0;
+   y = 0;
+ }
+}
+
 class Rect
 {
   float x, y, w, h;
@@ -31,6 +46,10 @@ class Rect
     w = r.w;
     h = r.h;
   }
+  Point2D ToPoint2D()
+  {
+    return new Point2D(x,y);
+  }
 }
 
 
@@ -56,6 +75,12 @@ class ObjBase
   
   ObjBase(Rect r)
   {
+    m_rect = r;
+    shape = Shape.square;
+  }
+  ObjBase(float x, float y, float w, float h)
+  {
+    Rect r = new Rect(x,y,w,h);
     m_rect = r;
     shape = Shape.square;
   }

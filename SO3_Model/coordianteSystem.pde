@@ -2,6 +2,7 @@ class CoordinateSystem extends ObjBase
 {
   float everyX;
   float everyY;
+  boolean drawNumbers = false;
   CoordinateSystem()
   {
     super(new Rect(0,height,width,-height));
@@ -24,13 +25,21 @@ class CoordinateSystem extends ObjBase
       if(i%everyX == 0)
       {
         line(i,0,i,-20); //<>//
+        if(drawNumbers)
+        {
+          text(i,i,-25);
+        }
       }
     }
     for(int i = 0; i > -height;i--)
     {
-      if(i%everyX == 0)
+      if(i%everyY == 0)
       {
         line(0,i,20,i);
+        if(drawNumbers)
+        {
+          text(i*-1,25,i);
+        }
       }
     }
     pop();

@@ -20,7 +20,7 @@ class Ball extends ObjBase
   {
     if(m_bEnabled)
     {
-      if((m_rect.y + velocity.y >= height-radius) || (m_rect.y >= height-radius) && !override)
+      if(((m_rect.y + velocity.y >= height-radius) || (m_rect.y >= height-radius)) && !override)
       {
         m_rect.y = height-radius;
         velocity.y = 0;
@@ -49,7 +49,7 @@ class Ball extends ObjBase
           if(locked)
           {
             println("Released");
-            PVector newForce = new PVector((mouseX-m_rect.x)/10,(mouseY-m_rect.y)/10,0);
+            PVector newForce = new PVector((mouseX-m_rect.x),(mouseY-m_rect.y));
             velocity.add(newForce); 
             locked = false;
             println("Adding force: " + newForce.x + ", " + newForce.y);

@@ -94,7 +94,27 @@ class ForceDrawer extends ObjBase
       Rect workRect = new Rect(m_rect.x+((m_rect.w/forces.size())*i),m_rect.y,m_rect.w/forces.size(),m_rect.h);
       fill(255,255,255);
       textSize(workRect.w/5);
-      text("Force: " + forces.get(i).name + "\n X: " + forces.get(i).force.x + "Y: " + forces.get(i).force.y, workRect.x+workRect.x,workRect.h/2);
+      String forceX = new String();
+      forceX += forces.get(i).force.x;
+      String forceY = new String();
+      forceY +=forces.get(i).force.y;
+      int forceXIndex = forceX.indexOf(".");
+      int forceYIndex = forceX.indexOf(".");
+      if(forceXIndex > -1)
+      {
+        if(forceX.substring(forceXIndex).length() > 3)
+        {
+          forceX = forceX.substring(0,forceXIndex+3);
+        }
+      }
+      if(forceYIndex > -1)
+      {
+        if(forceY.substring(forceYIndex).length() > 3)
+        {
+          forceY = forceY.substring(0,forceYIndex+3);
+        }
+      }
+      text("Force: " + forces.get(i).name + "\n X: " + forceX + " Y: " + forceY, workRect.x+workRect.x,workRect.h/2);
       pop();
     } 
   }
