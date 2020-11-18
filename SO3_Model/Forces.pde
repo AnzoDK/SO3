@@ -2,22 +2,33 @@ class Force
 {
   PVector force;
   String name;
+  boolean inUse;
   Force(String n,PVector v)
   {
     name = n;
     force = new PVector(v.x,v.y,v.z);
+    inUse = true;
     
   }
   Force(String n,float x, float y)
   {
     name = n;
     force = new PVector(x,y,0);
+    inUse = true;
+    
+  }
+  Force(String n,float x, float y,boolean enable)
+  {
+    name = n;
+    force = new PVector(x,y,0);
+    inUse = enable;
     
   }
   Force(String n)
   {
     name = n;
     force = new PVector(0,0,0);
+    inUse = true;
   }
   void Update()
   {
@@ -55,8 +66,14 @@ class AirResistance extends Force
     PVector tmp = field.balls.get(0).velocity;
     float directionX = (tmp.x *-1)/tmp.x;
     float directionY = (tmp.y *-1)/tmp.y;
-    
-    force = new PVector(tmp.x/100*directionX,tmp.y/100*directionY,0);
+    float newX = tmp.x/100*directionX;
+    //println("NewX = "+newX);
+    if(newX > (float)-0.0001)
+    {
+      newX = 0;
+      println("NewX is too small");
+    }
+    force = new PVector(newX,tmp.y/100*directionY,0);
     
     
   }
@@ -74,6 +91,18 @@ class ForceDrawer extends ObjBase
   void AddForce(Force f)
   {
     forces.add(f);
+  }
+  
+  Force GetForceByName(String s)
+  {
+    for(int i = 0; i < forces.size();i++)
+    {
+      if(forces.get(i).name == s)
+      {
+        return forces.get(i);
+      }
+    }
+    return new Force("Empty");
   }
   
   void Update()
@@ -115,7 +144,14 @@ class ForceDrawer extends ObjBase
           forceY = forceY.substring(0,forceYIndex+3);
         }
       }
-      text("Force: " + forces.get(i).name + "\n X: " + forceX + " Y: " + forceY, workRect.x+workRect.x,workRect.h/2);
+      if(forces.get(i).name.contains("Ball") || forces.get(i).name.contains("Air"))
+      {
+        text("Force: " + forces.get(i).name + "\n X: " + forceX + " Y: " + forceY, workRect.x+workRect.x,workRect.h/2);
+      }
+      else
+      {
+        text("Force: " + forces.get(i).name + "\n X: " + (float(forceX)*-1) + " Y: " + (float(forceY)*-1), workRect.x+workRect.x,workRect.h/2);
+      }
       pop();
     } 
   }

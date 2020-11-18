@@ -35,7 +35,7 @@ class Field extends ObjBase
       {
         for(int u = 0; u < forceDrawer.forces.size();u++)
         {
-          if(!forceDrawer.forces.get(u).name.contains("Ball"))
+          if(!forceDrawer.forces.get(u).name.contains("Ball") && forceDrawer.forces.get(u).inUse)
           {
             if(forceDrawer.forces.get(u).force.x == Float.NaN)
             {

@@ -6,8 +6,8 @@ class CoordinateSystem extends ObjBase
   CoordinateSystem()
   {
     super(new Rect(0,height,width,-height));
-    everyX = 100;
-    everyY = 100;
+    everyX = 50;
+    everyY = 50;
   }
   
   void Draw()
