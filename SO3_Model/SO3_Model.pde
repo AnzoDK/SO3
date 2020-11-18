@@ -15,7 +15,7 @@ void setup()
   logger = new Logger();
   sys.drawNumbers = true;
   forceDrawer = new ForceDrawer(new Rect(0,0,width/4,50));
-  field.balls.add(new Ball(0,height,20));
+  field.balls.add(new Ball(0,height,20,9.73));
   forceDrawer.AddForce(new Force("Gravity",0,1.82));
   forceDrawer.AddForce(new ForceTracker(field.balls.get(0)));
   forceDrawer.AddForce(new AirResistance());

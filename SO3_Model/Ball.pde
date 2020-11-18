@@ -6,13 +6,14 @@ class Ball extends ObjBase
   boolean locked = false;
   boolean override = false;
   Rect resetRect;
-  Ball(float x, float y, float radius)
+  Ball(float x, float y, float radius, float _mass)
   {
     super(new Rect(x,y,0,0),radius);
     velocity = new PVector(0,0,0);
     resetRect = new Rect(x,y,0,0);
     clr = color(255,0,0);
-    mass = 9.73;
+    //mass = 9.73;
+    mass = _mass;
     
   }
   
